@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% block content %}
+<div class="projects col-md-12 col-sm-12 col-xs-12">
+    <ul>
+        {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+        <p>{{message}}</p>
+        {% endfor %} {% endif %} {% endwith %} {% for c in categories %}
+        <a href="{{url_for('categoryItems', catalog_id=c.id)}}">
+            <li>{{c.name}}</li>
+            {% endfor %}
+
+        </a>
+    </ul>
+
+    {% if 'username' in session %}
+    <a href="{{url_for('newItem')}}">New Item</a> {% endif %}
+</div>
+{% endblock %}

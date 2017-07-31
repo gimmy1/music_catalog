@@ -1,0 +1,8 @@
+{% extends "base.html" %} {% block content %}
+<div>Here to Delete {{categoryItem.name}}</div>
+<form action="" method="POST">
+    <input type="submit" value="Delete">
+    <p>Or</p>
+    <a href="{{url_for('itemDescription', catalog_id=categoryItem.category_id, item_id=categoryItem.id)}}">Back</a>
+</form>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %} {% block content %}
+<h1>Edit your previously created Item</h1>
+<form action="" method="POST">
+    <fieldset>
+        <p>Name:</p>
+
+        <input type='text' size='30' value="{{categoryItem.name}}" name='name'>
+        <label for="">Description</label>
+        <textarea name="description" id="" cols="30" rows="10" class="form__textarea">{{categoryItem.description}}</textarea>
+        <label for="">Category</label>
+        <select name="category" id="">
+        {% for category in categories %}
+        {% if categoryItem.category_id == category.id %}
+        <option value="{{category.id}}">{{category.name}}</option>
+        {% else %}
+        <option value="{{category.id}}">{{category.name}}</option>
+        {% endif %}
+        {% endfor %}
+      </select>
+    </fieldset>
+    <a href="{{url_for('itemDescription', catalog_id=categoryItem.category_id, item_id = categoryItem.id)}}">Back</a>
+    <input type='submit' value='Edit'>
+</form>
+{% endblock %}

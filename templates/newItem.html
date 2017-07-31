@@ -1,0 +1,24 @@
+{% extends "base.html" %} {% block content %}
+<h1>Add a New Category Item</h1>
+<form action="" method="POST">
+    <fieldset>
+        <p>Name:</p>
+
+        <input type='text' size='30' name='name'>
+        <label for="">Description</label>
+        <textarea name="description" id="" cols="30" rows="10" class="form__textarea"></textarea>
+        <label for="">Category</label>
+        <select name="category" id="">
+        {% for category in categories %}
+        <option value="{{category.id}}">{{category.name}}</option>
+        {% endfor %}
+      </select>
+    </fieldset>
+    <a href="{{url_for('allCategories')}}">Back</a>
+    <input type='submit' value='Create'> {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+    <p>{{message}}</p>
+    {% endfor %} {% endif %} {% endwith %}
+
+</form>
+
+{% endblock %}
